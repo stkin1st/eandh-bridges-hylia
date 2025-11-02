@@ -2,6 +2,11 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const fs = require('fs');
 
+// Include bridge pages in the Eleventy build
+eleventyConfig.addCollection("bridges", function (collectionApi) {
+  return collectionApi.getFilteredByGlob("src/bridges/*.md");
+});
+
 // Import filters
 const dateFilter = require('./src/filters/date-filter.js');
 const markdownFilter = require('./src/filters/markdown-filter.js');
